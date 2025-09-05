@@ -11,7 +11,7 @@
 .container{
     width: 100vw;
     height:100vh;
-    background-color: #a5acb2;
+
     padding-top: 30px;
 }
 .calc{
@@ -44,8 +44,10 @@
     border-radius: 100%;
     border: none;
     font-size: 1rem;
-    box-shadow: 2px 3px  rgb(0, 0, 0, 0.5)
+    box-shadow: 2px 3px  rgb(0, 0, 0, 0.5);
+    background-color: white;
+    color: black;
 }
-.lines .btn:hover{
+.lines .hover:hover{
     background-color: lightblue;
 }
