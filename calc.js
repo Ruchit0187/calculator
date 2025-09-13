@@ -30,7 +30,7 @@ function number(value){
 }
 
 function result(value){
-    if(num.length>0){
+    if(num.length>0 && !num.includes('+') && !num.includes('-') && !num.includes('*')&& !num.includes('/')){
     num=num+value
     input.innerText=num
     }
@@ -47,6 +47,7 @@ function  Computation(){
     if(num.includes('^')){
         let a=num.split("^");
         input.innerText=Math.pow(eval(a[0]),eval(a[1]))
+        num=input.innerText;
         return
     }
     input.innerText=eval(num)
