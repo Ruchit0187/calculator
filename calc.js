@@ -31,10 +31,10 @@ function print(e) {
   if (value === "M-") memorysubstraction();
 }
 let num = "";
-input.innerText = "0";
+input.innerText = "";
 let evulatemethod = true;
 function number(value) {
-  input.innerText='0'
+  input.innerText=''
   if (evulatemethod){
     num = ''
     input.innerText = ""
@@ -47,18 +47,21 @@ function number(value) {
   s1.forEach((i) => {
     i.disabled = false;
   });
-  num = num + value;
-  if (num[0] === '0') {
+  if (num[0] === '0'|| (num[0]==='0' && num[1]==='0')) {
+    num=num.replace("0",'')
     zero.forEach((i) => i.disabled = true);
   }
-  if (num[1] != '0') {
+  num = num + value;
+  if (num[1] != '0' || num[0]!=='0') {
     zero.forEach((i) => i.disabled = false);
+  }
+  if(parseFloat(num)===0){
+    num='0'
   }
   input.innerText = num;
 }
-
 function result(value) {
-  if (
+  if(
     num.length > 0 ||
     num.includes("+") ||
     num.includes("-") ||
@@ -68,8 +71,8 @@ function result(value) {
   ) {
     special.disabled = false;
     evulatemethod=false;
-     let numlength=num.length;
-  if (/[\+\-\*\/]$/.test(num[numlength-1])){
+  let numlength=num.length;
+  if (/[\+\-\*\^\/]$/.test(num[numlength-1])){
       let a=num.slice(0,numlength-1)
       num=a+value;
       input.innerText=num;
@@ -82,16 +85,10 @@ function result(value) {
     num = num + value;
     input.innerText = num;
   } else {
-    alert("enter the number");
+    // num='0'+value
+    alert("enter the number")
   }
 }
-
-// function check(value){
-//   let numlength=num.length;
-//   if (/[\+\-\*\/]$/.test(num[numlength-1])){
-    
-//   }
-// }
 function Computation() {
   if (num.length === 0) {
     alert("give the number and operation");
@@ -105,6 +102,7 @@ function Computation() {
       evulatemethod=true
       return;
     }
+    special.disabled=false
     evulatemethod=true
     input.innerText = eval(num);
     num = input.innerText;
@@ -186,6 +184,8 @@ function memoryclear() {
   try {
     localStorage.setItem("value", 0);
     setTimeout(() => { }, 1000)
+    input.innerHTML='0'
+    num=''
   } catch (e) {
     alert(e);
   }
