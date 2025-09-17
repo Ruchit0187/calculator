@@ -31,7 +31,7 @@ function print(e) {
   if (value === "M-") memorysubstraction();
 }
 let num = "";
-input.innerText = "";
+input.innerText = "0";
 let evulatemethod = true;
 function number(value) {
   input.innerText=''
@@ -85,7 +85,6 @@ function result(value) {
     num = num + value;
     input.innerText = num;
   } else {
-    // num='0'+value
     alert("enter the number")
   }
 }
@@ -124,7 +123,7 @@ function Squre() {
 function Squreroot() {
   if (num.length > 0) {
     num = num + "**0.5";
-    try {
+    try{
       evulatemethod=true
       input.innerText = eval(num);
       num = input.innerText;
@@ -183,7 +182,6 @@ function clear() {
 function memoryclear() {
   try {
     localStorage.setItem("value", 0);
-    setTimeout(() => { }, 1000)
     input.innerHTML='0'
     num=''
   } catch (e) {
@@ -227,6 +225,7 @@ function off() {
 }
 function on() {
   input.innerHTML='0'
+  num=''
   button.forEach((i) => {
     i.disabled = false;
     i.classList.add("hover");
